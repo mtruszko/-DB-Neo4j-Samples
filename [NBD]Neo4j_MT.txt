@@ -1,7 +1,7 @@
 1. MATCH (hugo:Person {name: "Hugo Weaving"})-[:ACTED_IN]->(hugoWeavingMovies) RETURN hugo,hugoWeavingMovies
-2.
-3.
-4.
+2. MATCH (hugo:Person {name: "Hugo Weaving"})-[:ACTED_IN]->(hugoWeavingMovies)<-[:DIRECTED]-(director:Person) RETURN hugoWeavingMovies,director
+3. MATCH (hugo:Person {name:"Hugo Weaving"})-[:ACTED_IN]->(m)<-[:ACTED_IN]-(coActors) RETURN hugo,m,coActors
+4. MATCH (actor:Person)-[a:ACTED_IN]-(m:Movie) WITH actor, count(a) AS acting WHERE acting > 1 RETURN actor, acting
 5.
 6.
 7.
