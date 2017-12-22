@@ -1,0 +1,62 @@
+[
+  {
+    "keys": [
+      "a.name",
+      "b.title"
+    ],
+    "length": 2,
+    "_fields": [
+      "Cameron Crowe",
+      "Jerry Maguire"
+    ],
+    "_fieldLookup": {
+      "a.name": 0,
+      "b.title": 1
+    }
+  },
+  {
+    "keys": [
+      "a.name",
+      "b.title"
+    ],
+    "length": 2,
+    "_fields": [
+      "Lana Wachowski",
+      "Speed Racer"
+    ],
+    "_fieldLookup": {
+      "a.name": 0,
+      "b.title": 1
+    }
+  },
+  {
+    "keys": [
+      "a.name",
+      "b.title"
+    ],
+    "length": 2,
+    "_fields": [
+      "Lilly Wachowski",
+      "Speed Racer"
+    ],
+    "_fieldLookup": {
+      "a.name": 0,
+      "b.title": 1
+    }
+  },
+  {
+    "keys": [
+      "a.name",
+      "b.title"
+    ],
+    "length": 2,
+    "_fields": [
+      "Nancy Meyers",
+      "Something's Gotta Give"
+    ],
+    "_fieldLookup": {
+      "a.name": 0,
+      "b.title": 1
+    }
+  }
+]
