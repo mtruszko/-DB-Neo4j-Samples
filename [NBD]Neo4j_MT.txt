@@ -31,6 +31,7 @@ RETURN a.name, b.title
 *******************
 
 6.
+
 MATCH (a {name: 'Hugo Weaving'})-[:ACTED_IN]->(b)<-[:ACTED_IN]- (c {name: 'Keanu Reeves'})
 RETURN b
 
@@ -38,3 +39,22 @@ RETURN b
 *******************
 
 7.
+
+CREATE (CapitanAmerica:Movie {title:'Captain America: The First Avenger', released:2011, tagline:'When patriots become heroes'})
+CREATE (Joe:Person {name:'Joe Johnston', born:1950})
+CREATE (Christopher:Person {name:'Christopher Markus'})
+CREATE (Stephen:Person {name:'Stephen McFeely'})
+CREATE (Chris:Person {name:'Chris Evans', born:1981})
+CREATE (Samuel:Person {name:'Samuel L. Jackson', born:1948})
+CREATE
+	(Samuel)-[:ACTED_IN {roles:['Nick Fury']}]->(CapitanAmerica),
+ 	(Chris)-[:ACTED_IN {roles:['Captain America ']}]->(CapitanAmerica),
+  	(Joe)-[:DIRECTED]->(CapitanAmerica),
+  	(Christopher)-[:WROTE]->(CapitanAmerica),
+  	(Stephen)-[:WROTE]->(CapitanAmerica)
+
+WITH CapitanAmerica as m
+MATCH (a)- ->(m) RETURN a, m
+;
+
+
