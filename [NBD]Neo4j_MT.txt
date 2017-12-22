@@ -57,4 +57,43 @@ WITH CapitanAmerica as m
 MATCH (a)- ->(m) RETURN a, m
 ;
 
+********************
+
+8.
+
+MATCH (d {name: 'Darjeeling'})-[p *]->(s {name: 'Sandakphu'}) RETURN d, s, p
+
+
+********************
+
+9.
+
+MATCH a = allShortestPaths((d {name: 'Darjeeling'})-[p *]->(s {name: 'Sandakphu'})) RETURN a
+
+********************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
