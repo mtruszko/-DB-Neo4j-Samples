@@ -110,7 +110,12 @@ RETURN summerPaths
 
 14.
 
+MATCH (f:Flight)-[:ORIGIN]->(a:Airport)
+WITH a, count(f) AS fCount
+ORDER BY fCount DESC
+RETURN a, fCount
 
+**********************
 
 
 
