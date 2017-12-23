@@ -72,7 +72,12 @@ MATCH a = allShortestPaths((d {name: 'Darjeeling'})-[p *]->(s {name: 'Sandakphu'
 
 ********************
 
+10.
 
+MATCH a = allShortestPaths((d {name: 'Darjeeling'})-[*]->(s {name: 'Sandakphu'}))
+RETURN a, filter(x IN relationships(a) WHERE x.winter = "true")
+
+*********************
 
 
 
