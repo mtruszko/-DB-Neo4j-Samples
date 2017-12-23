@@ -79,12 +79,36 @@ RETURN a, filter(x IN relationships(a) WHERE x.winter = "true")
 
 *********************
 
+11. 
 
+MATCH a = (d {name: 'Darjeeling'})-[*]->(s {name: 'Sandakphu'})
+WITH relationships(a) AS ar
+UNWIND ar AS x
+WITH ar, sum(x.distance) AS distance
+ORDER BY distance
+RETURN ar, distance
 
+*********************
 
+12.
 
+MATCH a = (d {name: 'Darjeeling'})-[:twowheeler*]->(s)
+WITH relationships(a) AS ar
+WITH filter(x IN ar WHERE x.summer = "true") as summerPaths
+RETURN summerPaths
 
+**********************
 
+13.
+
+MATCH a = (d {name: 'Darjeeling'})<-[:twowheeler*]-(s)
+WITH relationships(a) AS ar
+WITH filter(x IN ar WHERE x.summer = "true") as summerPaths
+RETURN summerPaths
+
+**********************
+
+14.
 
 
 
