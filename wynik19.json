@@ -1,0 +1,38 @@
+[
+  {
+    "keys": [
+      "f.airline",
+      "count"
+    ],
+    "length": 2,
+    "_fields": [
+      "19977",
+      {
+        "low": 158,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "f.airline": 0,
+      "count": 1
+    }
+  },
+  {
+    "keys": [
+      "f.airline",
+      "count"
+    ],
+    "length": 2,
+    "_fields": [
+      "20304",
+      {
+        "low": 146,
+        "high": 0
+      }
+    ],
+    "_fieldLookup": {
+      "f.airline": 0,
+      "count": 1
+    }
+  }
+]

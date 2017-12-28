@@ -190,6 +190,8 @@ LIMIT 1
 
 19.
 
+MATCH (o:Airport)-[:ORIGIN]-(f:Flight)-[:DESTINATION]-(d:Airport)
+RETURN f.airline, count(o) AS count ORDER BY count DESC
 
 ***********************
 
