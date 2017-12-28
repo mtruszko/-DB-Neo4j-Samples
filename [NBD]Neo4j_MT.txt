@@ -117,17 +117,86 @@ RETURN a, fCount
 
 **********************
 
+#########      CREATING ADDITIONAL RELATIONSHIPS     ################
+
+MATCH (o:Airport)-[fo:ORIGIN]-(f)-[fd:DESTINATION]-(d:Airport)
+WITH o, f, d
+MATCH (f)-[]-(t:Ticket)
+MERGE (o)-[r:FLY_TO_TICKET {idf:id(f), idt:id(t), class: t.class}]->(d)
+RETURN o, r, d, f, t
+
+***********************
+
+15.
+
+MATCH p = ((o:Airport {name: "LAX"})-[:FLY_TO_TICKET*..3]->(d:Airport))
+WHERE ALL(x IN NODES(p) WHERE SINGLE(y IN NODES(p) WHERE y = x))
+WITH p, relationships(p) AS rp
+UNWIND rp As r
+MATCH (t)
+WHERE ID(t) = r.idt
+WITH p, t
+WITH p, sum(t.price) AS sumP
+WHERE sumP < 3000
+RETURN p, sumP
+
+**********************
+
+16.
 
 
+MATCH p = ((o:Airport {name: "LAX"})-[:FLY_TO_TICKET*..3]->(d:Airport {name: "DAY"}))
+WHERE ALL(x IN NODES(p) WHERE SINGLE(y IN NODES(p) WHERE y = x))
+WITH p, relationships(p) AS rp
+UNWIND rp As r
+MATCH (t)
+WHERE ID(t) = r.idt
+WITH p, r, t
+WITH p, sum(t.price) AS sumP
+RETURN p, sumP ORDER BY sumP
+
+************************
+
+17. 
+
+MATCH p = ((o:Airport {name: "LAX"})-[:FLY_TO_TICKET*..3]->(d:Airport {name: "DAY"}))
+WHERE ALL(x IN NODES(p) WHERE SINGLE(y IN NODES(p) WHERE y = x))
+WITH p, relationships(p) AS rp
+UNWIND rp As r
+MATCH (t)
+WHERE ID(t) = r.idt
+WITH p, t
+WITH p, sum(t.price) AS sumP
+RETURN p, sumP
+ORDER BY sumP
+LIMIT 1
+
+***********************
+
+18.
+
+MATCH p = ((o:Airport {name: "LAX"})-[:FLY_TO_TICKET*..3 {class: "business"}]->(d:Airport {name: "DAY"}))
+WHERE ALL(x IN NODES(p) WHERE SINGLE(y IN NODES(p) WHERE y = x))
+WITH p, relationships(p) AS rp
+UNWIND rp As r
+MATCH (t)
+WHERE ID(t) = r.idt
+WITH p, sum(t.price) AS sumP
+RETURN p, sumP
+ORDER BY sumP
+LIMIT 1
+
+***********************
+
+19.
 
 
+***********************
 
 
+20.
 
 
-
-
-
-
+***********************
 
 
