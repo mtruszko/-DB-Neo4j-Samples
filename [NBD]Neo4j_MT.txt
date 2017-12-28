@@ -196,6 +196,16 @@ LIMIT 1
 
 20.
 
+MATCH p = ((o:Airport)-[:FLY_TO_TICKET *2]->(d:Airport))
+WHERE ALL(x IN NODES(p) WHERE SINGLE(y IN NODES(p) WHERE y = x))
+WITH p, relationships(p) AS rp
+UNWIND rp As r
+MATCH (t)
+WHERE ID(t) = r.idt
+WITH p, sum(t.price) AS sumP
+RETURN p, sumP
+ORDER BY sumP
+LIMIT 1
 
 ***********************
 
